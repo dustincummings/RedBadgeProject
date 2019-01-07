@@ -197,6 +197,7 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("EventEntityId");
 
                     b.ToTable("EventTableAccess");
+                });
             modelBuilder.Entity("RedStarter.Database.Entities.Food.FoodEntity", b =>
                 {
                     b.Property<int>("FoodID")

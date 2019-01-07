@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RedStarter.API.DataContract.Event;
+using RedStarter.Business.DataContract.Event;
 
 namespace RedStarter.API.Controllers.Event
 {
@@ -15,16 +16,24 @@ namespace RedStarter.API.Controllers.Event
     public class EventController : Controller
     {
         private readonly IMapper _mapper;
+        private readonly IEventManager _manager;
 
-        public EventController(IMapper mapper)
+        public EventController(IMapper mapper, IEventManager manager)
         {
             _mapper = mapper;
+            _manager = manager;
         }
 
       [HttpPost]
       public async Task<IActionResult> PostEvent(EventCreateRequest request)
         {
-            return Ok();
+            var dto = _mapper.Map<EventCreateDTO>(request);
+            dto.DateCreated = DateTime.Now;
+
+            if(await _manager.CreateEvent(dto))
+                return StatusCode(201);
+
+            throw new Exception();
         }
 
     }
