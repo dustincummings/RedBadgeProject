@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RedStarter.API.Controllers.Food
 {
+
     public class FoodController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+
     }
 }
