@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RedStarter.Database.Entities.Application;
+using RedStarter.Database.Entities.Event;
 using RedStarter.Database.Entities.People;
-using RedStarter.Database.Entities.Roles;
+using RedStarter.Database.Entities.Roles;   
 
 namespace RedStarter.Database.Contexts
 {
@@ -20,6 +21,7 @@ namespace RedStarter.Database.Contexts
         public SISContext(DbContextOptions<SISContext> options) 
             : base(options) { }
 
+        public DbSet<EventEntity> EventTableAccess { get; set; }
         public DbSet<UserEntity> UserTableAccess { get; set; }
         public DbSet<ApplicationEntity> ApplicationTableAccess { get; set; }
         public DbSet<ContactEntity> ContactTableAccess { get; set; }
