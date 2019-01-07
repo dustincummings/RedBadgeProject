@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedStarter.Database.Contexts;
 
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    partial class SISContextModelSnapshot : ModelSnapshot
+    [Migration("20190107162959_eventtableadded")]
+    partial class eventtableadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,26 +199,6 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("EventEntityId");
 
                     b.ToTable("EventTableAccess");
-            modelBuilder.Entity("RedStarter.Database.Entities.Food.FoodEntity", b =>
-                {
-                    b.Property<int>("FoodID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Allergen");
-
-                    b.Property<string>("Description")
-                        .IsRequired();
-
-                    b.Property<string>("Ingredient")
-                        .IsRequired();
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.HasKey("FoodID");
-
-                    b.ToTable("FoodTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.People.UserEntity", b =>
