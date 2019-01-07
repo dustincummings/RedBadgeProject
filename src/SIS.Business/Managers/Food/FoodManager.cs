@@ -1,0 +1,33 @@
+﻿using AutoMapper;
+using RedStarter.Business.DataContract.Food;
+using RedStarter.Database.DataContract.Food;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RedStarter.Business.Managers.Food
+{
+    public class FoodManager : IFoodManager
+    {
+        private readonly IMapper _mapper;
+        private readonly IFoodRepository _repository;
+
+        public FoodManager(IMapper mapper, IFoodRepository repository)
+        {
+            _mapper = mapper;
+            _repository = repository;
+            
+        }
+
+        public async Task<bool> CreateFood(FoodCreateDTO dto)
+        {
+            var rao = _mapper.Map<FoodCreateRAO>(dto);
+            if (await _repository.CreateFood(rao))
+                return true;
+
+
+            throw new NotImplementedException();
+        }
+    }
+}

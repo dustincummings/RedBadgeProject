@@ -11,7 +11,8 @@ namespace RedStarter.Database.Entities.Food
     {
         [Key]
         public int FoodID { get; set; }
-
+        [Required]
+        public int OwnerID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
