@@ -93,6 +93,7 @@ namespace RedStarter.API
             //===== Mapping Config =======
             var mappingConfig = new MapperConfiguration(mc =>
             {
+                mc.AddProfile(new FoodMappingProfile());
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
             });
