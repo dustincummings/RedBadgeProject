@@ -16,9 +16,11 @@ using RedStarter.API.MappingProfiles;
 using RedStarter.Business.DataContract.Application.Interfaces;
 using RedStarter.Business.DataContract.Authorization.Interfaces;
 using RedStarter.Business.DataContract.Customer;
+using RedStarter.Business.DataContract.Food;
 using RedStarter.Business.Managers.Application;
 using RedStarter.Business.Managers.Authorization;
 using RedStarter.Business.Managers.Customer;
+using RedStarter.Business.Managers.Food;
 using RedStarter.Database.Application;
 using RedStarter.Database.Authorization;
 using RedStarter.Database.Contexts;
@@ -26,9 +28,11 @@ using RedStarter.Database.Customer;
 using RedStarter.Database.DataContract.Application;
 using RedStarter.Database.DataContract.Authorization.Interfaces;
 using RedStarter.Database.DataContract.Customer;
+using RedStarter.Database.DataContract.Food;
 using RedStarter.Database.DataContract.Roles.Interfaces;
 using RedStarter.Database.Entities.People;
 using RedStarter.Database.Entities.Roles;
+using RedStarter.Database.Food;
 using RedStarter.Database.Roles;
 using RedStarter.Database.SeedData;
 using Swashbuckle.AspNetCore.Swagger;
@@ -114,6 +118,8 @@ namespace RedStarter.API
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
             services.AddScoped<ICustomerManager, CustomerManager>();
             //services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IFoodManager, FoodManager>();
+            services.AddScoped<IFoodRepository, FoodRepository>();
 
             //======= Swagger =======
             services.AddSwaggerGen(c =>
