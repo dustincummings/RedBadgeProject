@@ -42,3 +42,4 @@ Depends only on a connection to the SIS database and Entity Framework.
 
 3) Project.Database.Tests
 
+"# RedBadgeProject" 
