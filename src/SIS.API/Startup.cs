@@ -15,13 +15,17 @@ using Microsoft.IdentityModel.Tokens;
 using RedStarter.API.MappingProfiles;
 using RedStarter.Business.DataContract.Application.Interfaces;
 using RedStarter.Business.DataContract.Authorization.Interfaces;
+using RedStarter.Business.DataContract.Customer;
 using RedStarter.Business.Managers.Application;
 using RedStarter.Business.Managers.Authorization;
+using RedStarter.Business.Managers.Customer;
 using RedStarter.Database.Application;
 using RedStarter.Database.Authorization;
 using RedStarter.Database.Contexts;
+using RedStarter.Database.Customer;
 using RedStarter.Database.DataContract.Application;
 using RedStarter.Database.DataContract.Authorization.Interfaces;
+using RedStarter.Database.DataContract.Customer;
 using RedStarter.Database.DataContract.Roles.Interfaces;
 using RedStarter.Database.Entities.People;
 using RedStarter.Database.Entities.Roles;
@@ -107,6 +111,8 @@ namespace RedStarter.API
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
+            services.AddScoped<ICustomerManager, CustomerManager>();
+            //services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             //======= Swagger =======
             services.AddSwaggerGen(c =>
