@@ -21,5 +21,7 @@ namespace RedStarter.Database.Entities.Customer
         public string CustAddress { get; set; }
         [Required]
         public string CustCityStZip { get; set; }
+        [Required]
+        public int OwnerID { get; set; }
     }
 }

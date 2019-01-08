@@ -12,5 +12,6 @@ namespace RedStarter.Business.DataContract.Customer
         public string CustPhone { get; set; }
         public string CustAddress { get; set; }
         public string CustCityStZip { get; set; }
+        public int OwnerID { get; set; }
     }
 }

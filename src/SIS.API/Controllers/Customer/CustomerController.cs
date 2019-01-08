@@ -35,6 +35,7 @@ namespace RedStarter.API.Controllers.Customer
             var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             var dto = _mapper.Map<CustomerCreateDTO>(request);
+            dto.OwnerID = identityClaimNum;
 
             if (await _manager.CreateCustomer(dto))
                 return StatusCode(201);
