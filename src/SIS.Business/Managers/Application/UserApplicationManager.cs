@@ -36,6 +36,8 @@ namespace RedStarter.Business.Managers.Application
             rao.OwnerId = applicationDTO.OwnerId;
 
             Guid ApplicationGuid = Guid.NewGuid();
+
+            if (await _applicationRepository.CreateApplication(rao, ApplicationGuid))
             
             if (await _roleRepository.AddUserToRole(user, "User"))
             {
@@ -46,9 +48,6 @@ namespace RedStarter.Business.Managers.Application
             {
                 return false;
             }
-
-
-                          
         }
     }
 }
