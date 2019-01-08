@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RedStarter.API.DataContract.Food;
 using RedStarter.Business.DataContract.Food;
+using RedStarter.Database.DataContract.Food;
 
 namespace RedStarter.API.Controllers.Food
 {
@@ -17,11 +18,13 @@ namespace RedStarter.API.Controllers.Food
     {
         private readonly IMapper _mapper;
         private readonly IFoodManager _manager;
+        private readonly IFoodRepository _repository;
 
-        public FoodController(IMapper mapper, IFoodManager manager)
+        public FoodController(IMapper mapper, IFoodManager manager, IFoodRepository repository)
         {
             _mapper = mapper;
             _manager = manager;
+            _repository = repository;
         }
        [HttpPost]
        public async Task<IActionResult> PostFood(FoodCreateRequest request)
@@ -39,6 +42,20 @@ namespace RedStarter.API.Controllers.Food
 
 
             throw new Exception();
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetFoods()
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var dto = await _manager.GetFoods();
+            var response = _mapper.Map<IEnumerable<GetFoodListItemsResponse>>(dto);
+
+            return Ok(response);
+
         }
 
     }

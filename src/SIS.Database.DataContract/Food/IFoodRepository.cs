@@ -8,6 +8,6 @@ namespace RedStarter.Database.DataContract.Food
     public interface IFoodRepository
     {
         Task<bool> CreateFood(FoodCreateRAO rao);
-
+        Task<IEnumerable<FoodGetListItemsRAO>> GetFoods();
     }
 }

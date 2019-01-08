@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RedStarter.Database.Contexts;
 using RedStarter.Database.DataContract.Food;
 using RedStarter.Database.Entities.Food;
@@ -26,10 +27,14 @@ namespace RedStarter.Database.Food
            await _context.FoodTableAccess.AddAsync(entity);
 
             return await _context.SaveChangesAsync() == 1;
-                
+        }
 
+        public async Task<IEnumerable<FoodGetListItemsRAO>> GetFoods()
+        {
+            var query = await _context.FoodTableAccess.ToArrayAsync();
+            var rao = _mapper.Map<IEnumerable<FoodGetListItemsRAO>>(query);
 
-            
+            return rao;
         }
     }
 }
