@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\20190107162739_eventenabled.cs" />
+    <Compile Remove="Migrations\20190107193816_changedGuidToInt.cs" />
   </ItemGroup>
 
   <ItemGroup>

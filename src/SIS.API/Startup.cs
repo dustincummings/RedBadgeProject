@@ -21,6 +21,11 @@ using RedStarter.Business.Managers.Application;
 using RedStarter.Business.Managers.Authorization;
 using RedStarter.Business.Managers.Customer;
 using RedStarter.Business.Managers.Event;
+using RedStarter.Business.DataContract.Food;
+using RedStarter.Business.Managers.Application;
+using RedStarter.Business.Managers.Authorization;
+using RedStarter.Business.Managers.Customer;
+using RedStarter.Business.Managers.Food;
 using RedStarter.Database.Application;
 using RedStarter.Database.Authorization;
 using RedStarter.Database.Contexts;
@@ -33,6 +38,11 @@ using RedStarter.Database.DataContract.Roles.Interfaces;
 using RedStarter.Database.Entities.People;
 using RedStarter.Database.Entities.Roles;
 using RedStarter.Database.Event;
+using RedStarter.Database.DataContract.Food;
+using RedStarter.Database.DataContract.Roles.Interfaces;
+using RedStarter.Database.Entities.People;
+using RedStarter.Database.Entities.Roles;
+using RedStarter.Database.Food;
 using RedStarter.Database.Roles;
 using RedStarter.Database.SeedData;
 using Swashbuckle.AspNetCore.Swagger;
@@ -101,6 +111,7 @@ namespace RedStarter.API
             //===== Mapping Config =======
             var mappingConfig = new MapperConfiguration(mc =>
             {
+                mc.AddProfile(new CustomerMappingProfile());
                 mc.AddProfile(new FoodMappingProfile());
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
@@ -122,7 +133,9 @@ namespace RedStarter.API
             services.AddScoped<ICustomerManager, CustomerManager>();
             services.AddScoped<IEventManager, EventManager>();
             services.AddScoped<IEventRepository, EventRepository>();
-            //services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IFoodManager, FoodManager>();
+            services.AddScoped<IFoodRepository, FoodRepository>();
 
             //======= Swagger =======
             services.AddSwaggerGen(c =>

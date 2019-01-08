@@ -10,8 +10,8 @@ using RedStarter.Database.Contexts;
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    [Migration("20190107162959_eventtableadded")]
-    partial class eventtableadded
+    [Migration("20190107185709_CustomerTableAdded")]
+    partial class CustomerTableAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -181,6 +181,35 @@ namespace RedStarter.Database.Migrations
                     b.ToTable("ExperienceTableAccess");
                 });
 
+            modelBuilder.Entity("RedStarter.Database.Entities.Customer.CustomerEntity", b =>
+                {
+                    b.Property<int>("CustID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CustAddress")
+                        .IsRequired();
+
+                    b.Property<string>("CustCityStZip")
+                        .IsRequired();
+
+                    b.Property<string>("CustEmail")
+                        .IsRequired();
+
+                    b.Property<string>("CustFirstName")
+                        .IsRequired();
+
+                    b.Property<string>("CustLastName")
+                        .IsRequired();
+
+                    b.Property<string>("CustPhone")
+                        .IsRequired();
+
+                    b.HasKey("CustID");
+
+                    b.ToTable("CustomerTableAccess");
+                });
+
             modelBuilder.Entity("RedStarter.Database.Entities.Event.EventEntity", b =>
                 {
                     b.Property<int>("EventEntityId")
@@ -199,6 +228,28 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("EventEntityId");
 
                     b.ToTable("EventTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Food.FoodEntity", b =>
+                {
+                    b.Property<int>("FoodID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Allergen");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<string>("Ingredient")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("FoodID");
+
+                    b.ToTable("FoodTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.People.UserEntity", b =>

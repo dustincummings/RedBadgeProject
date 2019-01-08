@@ -10,8 +10,8 @@ using RedStarter.Database.Contexts;
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    [Migration("20190107160211_addingFoodEntity")]
-    partial class addingFoodEntity
+    [Migration("20190107201100_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -179,6 +179,55 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("ApplicationEntityId");
 
                     b.ToTable("ExperienceTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Customer.CustomerEntity", b =>
+                {
+                    b.Property<int>("CustID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CustAddress")
+                        .IsRequired();
+
+                    b.Property<string>("CustCityStZip")
+                        .IsRequired();
+
+                    b.Property<string>("CustEmail")
+                        .IsRequired();
+
+                    b.Property<string>("CustFirstName")
+                        .IsRequired();
+
+                    b.Property<string>("CustLastName")
+                        .IsRequired();
+
+                    b.Property<string>("CustPhone")
+                        .IsRequired();
+
+                    b.HasKey("CustID");
+
+                    b.ToTable("CustomerTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Event.EventEntity", b =>
+                {
+                    b.Property<int>("EventEntityId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AdditionalNotes");
+
+                    b.Property<DateTimeOffset>("DateCreated");
+
+                    b.Property<string>("Location")
+                        .IsRequired();
+
+                    b.Property<int>("NumberOfPeople");
+
+                    b.HasKey("EventEntityId");
+
+                    b.ToTable("EventTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.Food.FoodEntity", b =>
