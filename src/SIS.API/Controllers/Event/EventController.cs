@@ -26,6 +26,7 @@ namespace RedStarter.API.Controllers.Event
         }
 
       [HttpPost]
+      [Authorize(Roles ="Admin, User")]
       public async Task<IActionResult> PostEvent(EventCreateRequest request)
         {
 
