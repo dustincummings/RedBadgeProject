@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RedStarter.Database.Migrations
 {
-    public partial class initial : Migration
+    public partial class inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -112,6 +112,22 @@ namespace RedStarter.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EventTableAccess",
+                columns: table => new
+                {
+                    EventEntityId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Location = table.Column<string>(nullable: false),
+                    NumberOfPeople = table.Column<int>(nullable: false),
+                    AdditionalNotes = table.Column<string>(nullable: true),
+                    DateCreated = table.Column<DateTimeOffset>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventTableAccess", x => x.EventEntityId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ExperienceTableAccess",
                 columns: table => new
                 {
@@ -122,6 +138,23 @@ namespace RedStarter.Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ExperienceTableAccess", x => x.ApplicationEntityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FoodTableAccess",
+                columns: table => new
+                {
+                    FoodID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OwnerID = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Ingredient = table.Column<string>(nullable: false),
+                    Allergen = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodTableAccess", x => x.FoodID);
                 });
 
             migrationBuilder.CreateTable(
@@ -300,7 +333,13 @@ namespace RedStarter.Database.Migrations
                 name: "EducationTableAccess");
 
             migrationBuilder.DropTable(
+                name: "EventTableAccess");
+
+            migrationBuilder.DropTable(
                 name: "ExperienceTableAccess");
+
+            migrationBuilder.DropTable(
+                name: "FoodTableAccess");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

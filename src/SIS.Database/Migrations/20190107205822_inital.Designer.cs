@@ -10,8 +10,8 @@ using RedStarter.Database.Contexts;
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    [Migration("20181217153941_initial")]
-    partial class initial
+    [Migration("20190107205822_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -179,6 +179,50 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("ApplicationEntityId");
 
                     b.ToTable("ExperienceTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Event.EventEntity", b =>
+                {
+                    b.Property<int>("EventEntityId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AdditionalNotes");
+
+                    b.Property<DateTimeOffset>("DateCreated");
+
+                    b.Property<string>("Location")
+                        .IsRequired();
+
+                    b.Property<int>("NumberOfPeople");
+
+                    b.HasKey("EventEntityId");
+
+                    b.ToTable("EventTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Food.FoodEntity", b =>
+                {
+                    b.Property<int>("FoodID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Allergen");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<string>("Ingredient")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<int>("OwnerID");
+
+                    b.HasKey("FoodID");
+
+                    b.ToTable("FoodTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.People.UserEntity", b =>

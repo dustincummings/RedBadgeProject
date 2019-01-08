@@ -247,6 +247,8 @@ namespace RedStarter.Database.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
+                    b.Property<int>("OwnerID");
+
                     b.HasKey("FoodID");
 
                     b.ToTable("FoodTableAccess");
