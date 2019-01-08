@@ -10,5 +10,6 @@ namespace RedStarter.Business.DataContract.Event
         public int NumberOfPeople { get; set; }
         public string AdditionalNotes { get; set; }
         public DateTimeOffset DateCreated { get; set; }
+        public int OwnerId { get; set; }
     }
 }

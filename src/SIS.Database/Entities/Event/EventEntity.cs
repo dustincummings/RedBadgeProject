@@ -18,6 +18,10 @@ namespace RedStarter.Database.Entities.Event
         public string AdditionalNotes { get; set; }
 
         [Required]
+        public int OwnerId { get; set; }
+
+        [Required]
         public DateTimeOffset DateCreated { get; set; }
+
     }
 }
