@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RedStarter.API.DataContract.Customer;
 using RedStarter.Business.DataContract.Customer;
+using RedStarter.Database.Contexts;
 
 namespace RedStarter.API.Controllers.Customer
 {
@@ -43,5 +44,9 @@ namespace RedStarter.API.Controllers.Customer
             throw new Exception();
             //return Ok();
         }
+
+        // GET /api/Customer
+       
+
     }
 }
