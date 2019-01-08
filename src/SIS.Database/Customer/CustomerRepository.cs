@@ -9,7 +9,7 @@ using RedStarter.Database.Entities.Customer;
 
 namespace RedStarter.Database.Customer
 {
-    public class CustomerRepository //: ICustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly SISContext _context;
         private readonly IMapper _mapper;
@@ -20,15 +20,15 @@ namespace RedStarter.Database.Customer
             _mapper = mapper;
         }
 
-        //public async Task<bool> CreateCustomer(CustomerCreateRAO rao)
-        //{
-        //    var entity = Mapper.Map<CustomerEntity>(rao);
+        public async Task<bool> CreateCustomer(CustomerCreateRAO rao)
+        {
+            var entity = _mapper.Map<CustomerEntity>(rao);
 
-        //    _context.CustomerTableAccess.AddAsync(entity);
+            _context.CustomerTableAccess.AddAsync(entity);
 
-        //    return await _context.SaveChangesAsync() == 1;
+            return await _context.SaveChangesAsync() == 1;
 
-        //    throw new NotImplementedException();
-        //}
+            throw new NotImplementedException();
+        }
     }
 }

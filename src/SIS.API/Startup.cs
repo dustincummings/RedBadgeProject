@@ -101,6 +101,7 @@ namespace RedStarter.API
             //===== Mapping Config =======
             var mappingConfig = new MapperConfiguration(mc =>
             {
+                mc.AddProfile(new CustomerMappingProfile());
                 mc.AddProfile(new FoodMappingProfile());
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
@@ -117,7 +118,7 @@ namespace RedStarter.API
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
             services.AddScoped<ICustomerManager, CustomerManager>();
-            //services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IFoodManager, FoodManager>();
             services.AddScoped<IFoodRepository, FoodRepository>();
 

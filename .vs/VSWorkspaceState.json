@@ -1,19 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\SIS.API",
-    "\\src\\SIS.API\\MappingProfiles",
-    "\\src\\SIS.Business",
-    "\\src\\SIS.Business\\Managers",
-    "\\src\\SIS.Business\\Managers\\Customer",
-    "\\src\\SIS.Database",
-    "\\src\\SIS.Database.DataContract",
-    "\\src\\SIS.Database.DataContract\\Customer",
-    "\\src\\SIS.Database\\Customer",
-    "\\src\\SIS.Database\\Entities",
-    "\\src\\SIS.Database\\Entities\\Customer"
+    "\\src"
   ],
-  "SelectedNode": "\\src\\SIS.API\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

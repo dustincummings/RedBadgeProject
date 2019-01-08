@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedStarter.Database.Contexts;
 
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    partial class SISContextModelSnapshot : ModelSnapshot
+    [Migration("20190107182038_combiningallthreetables")]
+    partial class combiningallthreetables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,37 +181,6 @@ namespace RedStarter.Database.Migrations
                     b.ToTable("ExperienceTableAccess");
                 });
 
-            modelBuilder.Entity("RedStarter.Database.Entities.Customer.CustomerEntity", b =>
-                {
-                    b.Property<int>("CustID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CustAddress")
-                        .IsRequired();
-
-                    b.Property<string>("CustCityStZip")
-                        .IsRequired();
-
-                    b.Property<string>("CustEmail")
-                        .IsRequired();
-
-                    b.Property<string>("CustFirstName")
-                        .IsRequired();
-
-                    b.Property<string>("CustLastName")
-                        .IsRequired();
-
-                    b.Property<string>("CustPhone")
-                        .IsRequired();
-
-                    b.Property<int>("OwnerID");
-
-                    b.HasKey("CustID");
-
-                    b.ToTable("CustomerTableAccess");
-                });
-
             modelBuilder.Entity("RedStarter.Database.Entities.Event.EventEntity", b =>
                 {
                     b.Property<int>("EventEntityId")
@@ -246,8 +217,6 @@ namespace RedStarter.Database.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired();
-
-                    b.Property<int>("OwnerID");
 
                     b.HasKey("FoodID");
 
