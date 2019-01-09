@@ -52,5 +52,23 @@ namespace RedStarter.Database.Event
 
             return rao;
         }
+        public async Task<bool> EditEvent(EventUpdateRAO rao)
+        {
+            var entity = _mapper.Map<EventEntity>(rao);
+
+            _context.EventTableAccess.Update(entity);
+
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        public async Task<bool> DeleteEvent(int id)
+        {
+            var entity = await _context.EventTableAccess.SingleAsync(e => e.EventEntityId == id);
+            _context.EventTableAccess.Remove(entity);
+
+            return await _context.SaveChangesAsync() == 1;
+
+
+        }
     }
 }

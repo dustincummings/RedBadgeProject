@@ -1,30 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace RedStarter.Database.Entities.Event
+namespace RedStarter.Business.DataContract.Event
 {
-   public class EventEntity
+   public class EventUpdateDTO
     {
-        [Key]
-        public int EventEntityId { get; set; }
-
-        [Required]
-        public int OwnerId { get; set; }
-
-        [Required]
+        public int EventID { get; set; }
         public string Location { get; set; }
-
         public int NumberOfPeople { get; set; }
-
         public string AdditionalNotes { get; set; }
-
-        [Required]
         public string Food { get; set; }
-
-        [Required]
         public DateTimeOffset DateCreated { get; set; }
-
     }
 }

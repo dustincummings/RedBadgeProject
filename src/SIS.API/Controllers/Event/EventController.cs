@@ -80,7 +80,27 @@ namespace RedStarter.API.Controllers.Event
 
             return Ok(response); //TODO : Handle exception
         }
-        
+        [HttpPut]
+        public async Task<IActionResult> EditEvent(PatchEventListItemRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+            var dto = _mapper.Map<EventUpdateDTO>(request);
+            if (await _manager.EditEvent(dto))
+                return StatusCode(201);
+            return Ok();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEvent(int id)
+        {
+            if (await _manager.DeleteEvent(id))
+                return StatusCode(201);
+            throw new Exception();
+
+        }
+
 
 
 

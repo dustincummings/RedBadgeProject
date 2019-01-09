@@ -46,6 +46,23 @@ namespace RedStarter.Business.Managers.Event
 
             return dto;
         }
+        public async Task<bool> EditEvent(EventUpdateDTO dto)
+        {
+            var rao = _mapper.Map<EventUpdateRAO>(dto);
+            if (await _repository.EditEvent(rao))
+                return true;
+            throw new NotImplementedException();
+
+
+        }
+
+        public async Task<bool> DeleteEvent(int id)
+        {
+            await _repository.DeleteEvent(id);
+
+            return true;
+
+        }
 
     }
 }
