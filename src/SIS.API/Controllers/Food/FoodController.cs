@@ -79,8 +79,14 @@ namespace RedStarter.API.Controllers.Food
             var dto = _mapper.Map<FoodUpdateDTO>(request);
             if (await _manager.EditFood(dto))
                 return StatusCode(201);
+            return Ok();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteFood(int id)
+        {
+            if (await _manager.DeleteFood(id))
+                return StatusCode(201);
             throw new Exception();
-
 
         }
     }

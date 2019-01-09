@@ -11,5 +11,6 @@ namespace RedStarter.Business.DataContract.Food
         Task<IEnumerable<FoodGetListItemsDTO>> GetFoods();
         Task<FoodGetListItemsDTO> GetFoodById(int id);
         Task<bool> EditFood(FoodUpdateDTO dto);
+        Task<bool> DeleteFood(int id);
     }
 }

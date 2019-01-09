@@ -53,6 +53,14 @@ namespace RedStarter.Database.Food
             return await _context.SaveChangesAsync() == 1;
         }
 
+        public async Task<bool> DeleteFood(int id)
+        {
+            var entity = await _context.FoodTableAccess.SingleAsync(e => e.FoodID == id);
+            _context.FoodTableAccess.Remove(entity);
 
+            return await _context.SaveChangesAsync() == 1;
+
+
+        }
     }
 }

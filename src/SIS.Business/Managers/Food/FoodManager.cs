@@ -54,5 +54,13 @@ namespace RedStarter.Business.Managers.Food
 
 
         }
+
+        public  async Task<bool> DeleteFood(int id)
+        {
+            await _repository.DeleteFood(id);
+
+            return true;
+
+        }
     }
 }
