@@ -46,7 +46,21 @@ namespace RedStarter.API.Controllers.Customer
         }
 
         // GET /api/Customer
-       
+       [HttpGet]
+       public async Task<IActionResult> GetCustomerList()
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var dto = await _manager.GetCustomerList();
+            var response = _mapper.Map<IEnumerable<CustomerListResponse>>(dto);
+
+            return Ok(response);
+        }
 
     }
 }
