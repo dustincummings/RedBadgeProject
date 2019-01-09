@@ -37,5 +37,13 @@ namespace RedStarter.Business.Managers.Food
 
             return dto;
         }
+
+        public async Task<FoodGetListItemsDTO> GetFoodById(int id)
+        {
+            var rao = await _repository.GetFoodById(id);
+            var dto = _mapper.Map<FoodGetListItemsDTO>(rao);
+
+            return dto;
+        }
     }
 }

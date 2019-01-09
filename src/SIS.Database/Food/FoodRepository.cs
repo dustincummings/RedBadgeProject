@@ -29,6 +29,14 @@ namespace RedStarter.Database.Food
             return await _context.SaveChangesAsync() == 1;
         }
 
+        public async Task<FoodGetListItemsRAO> GetFoodById(int id)
+        {
+            var query = await _context.FoodTableAccess.SingleAsync(e => e.FoodID == id);
+            var rao = _mapper.Map<FoodGetListItemsRAO> (query);
+
+            return rao;
+        }
+
         public async Task<IEnumerable<FoodGetListItemsRAO>> GetFoods()
         {
             var query = await _context.FoodTableAccess.ToArrayAsync();

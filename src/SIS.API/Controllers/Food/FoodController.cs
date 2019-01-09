@@ -26,8 +26,8 @@ namespace RedStarter.API.Controllers.Food
             _manager = manager;
             _repository = repository;
         }
-       [HttpPost]
-       public async Task<IActionResult> PostFood(FoodCreateRequest request)
+        [HttpPost]
+        public async Task<IActionResult> PostFood(FoodCreateRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -37,7 +37,7 @@ namespace RedStarter.API.Controllers.Food
             var dto = _mapper.Map<FoodCreateDTO>(request);
             dto.OwnerID = identityClaimNum;
 
-            if( await _manager.CreateFood(dto))
+            if (await _manager.CreateFood(dto))
                 return StatusCode(201);
 
 
@@ -55,8 +55,20 @@ namespace RedStarter.API.Controllers.Food
             var response = _mapper.Map<IEnumerable<GetFoodListItemsResponse>>(dto);
 
             return Ok(response);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetFoodById(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var dto = await _manager.GetFoodById(id);
+            var response = _mapper.Map<GetFoodListItemsResponse>(dto);
+
+            return Ok(response);
 
         }
-
     }
 }
