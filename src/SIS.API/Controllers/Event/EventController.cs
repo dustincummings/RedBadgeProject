@@ -65,6 +65,23 @@ namespace RedStarter.API.Controllers.Event
             return Ok(response); //TODO : Handle exceptions
 
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetEventById(int id)
+        {
+             if (!ModelState.IsValid) //want this to check 
+                {
+                    return StatusCode(400);
+                }
+
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var dto = await _manager.GetEventById(id);
+            var response = _mapper.Map<GetEventListItemsResponse>(dto);
+
+            return Ok(response); //TODO : Handle exception
+        }
+        
+
 
 
 
