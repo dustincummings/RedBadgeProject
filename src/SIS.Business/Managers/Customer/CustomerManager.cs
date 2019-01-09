@@ -36,5 +36,13 @@ namespace RedStarter.Business.Managers.Customer
 
             return dto;
         }
+
+        public async Task<CustomerListDTO> GetCustomerById(int id)
+        {
+            var rao = await _repository.GetCustomerById(id);
+            var dto = _mapper.Map<CustomerListDTO>(rao);
+
+            return dto;
+        }
     }
 }

@@ -39,7 +39,6 @@ namespace RedStarter.Business.Managers.Application
 
             if (await _applicationRepository.CreateApplication(rao, ApplicationGuid))
             
-            if (await _roleRepository.AddUserToRole(user, "User"))
             {
                 await _roleRepository.AddUserToRole(user, "User");
                 return true;

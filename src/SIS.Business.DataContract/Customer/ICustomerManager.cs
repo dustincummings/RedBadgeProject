@@ -9,5 +9,6 @@ namespace RedStarter.Business.DataContract.Customer
     {
         Task<bool> CreateCustomer(CustomerCreateDTO dto);
         Task<IEnumerable<CustomerListDTO>> GetCustomerList();
+        Task<CustomerListDTO> GetCustomerById(int id);
     }
 }

@@ -23,6 +23,8 @@ namespace RedStarter.API.MappingProfiles
             CreateMap<CustomerEntity, CustomerListRAO>();
             CreateMap<CustomerListRAO, CustomerListDTO>();
             CreateMap<CustomerListDTO, CustomerListResponse>();
+
+            // Get Customer by ID
         }
     }
 }

@@ -25,7 +25,7 @@ namespace RedStarter.Database.Customer
         {
             var entity = _mapper.Map<CustomerEntity>(rao);
 
-            _context.CustomerTableAccess.AddAsync(entity);
+            await _context.CustomerTableAccess.AddAsync(entity);
 
             return await _context.SaveChangesAsync() == 1;
 
@@ -34,8 +34,16 @@ namespace RedStarter.Database.Customer
 
         public async Task<IEnumerable<CustomerListRAO>> GetCustomerList()
         {
-            var query = await _context.CustomerTableAccess.ToArrayAsync();     //SingleAsync e=> CustID == id
+            var query = await _context.CustomerTableAccess.ToArrayAsync();
             var rao = _mapper.Map<IEnumerable<CustomerListRAO>>(query);
+
+            return rao;
+        }
+
+        public async Task<CustomerListRAO> GetCustomerById(int id)
+        {
+            var query = await _context.CustomerTableAccess.SingleAsync(e=> e.CustID == id);
+            var rao = _mapper.Map<CustomerListRAO>(query);
 
             return rao;
         }

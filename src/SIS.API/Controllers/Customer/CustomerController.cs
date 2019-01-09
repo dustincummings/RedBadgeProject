@@ -46,8 +46,9 @@ namespace RedStarter.API.Controllers.Customer
         }
 
         // GET /api/Customer
-       [HttpGet]
-       public async Task<IActionResult> GetCustomerList()
+        [HttpGet]
+        //[Authorize(Roles = "User")]
+        public async Task<IActionResult> GetCustomerList()
         {
             if (!ModelState.IsValid)
             {
@@ -61,6 +62,27 @@ namespace RedStarter.API.Controllers.Customer
 
             return Ok(response);
         }
+
+        // GET /api/Customer/id
+        [HttpGet("{id}")]
+        //[Authorize(Roles ="User")]
+
+        public async Task<IActionResult> GetCustomerById(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var dto = await _manager.GetCustomerById(id);
+            var response = _mapper.Map<CustomerListResponse>(dto);
+
+            return Ok(response);
+
+        }
+
 
     }
 }
