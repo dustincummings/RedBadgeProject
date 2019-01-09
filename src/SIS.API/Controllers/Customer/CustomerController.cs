@@ -102,5 +102,21 @@ namespace RedStarter.API.Controllers.Customer
             throw new Exception();
         }
 
+        // DELETE /api/Customer/id
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult> DeleteCustomer(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            if (await _manager.DeleteCustomer(id))
+                return StatusCode(200);
+
+            throw new Exception();
+        }
+
     }
 }

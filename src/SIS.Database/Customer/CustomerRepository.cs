@@ -56,6 +56,13 @@ namespace RedStarter.Database.Customer
             return await _context.SaveChangesAsync() == 1;
         }
 
-        
+        public async Task<bool> DeleteCustomer(int id)
+        {
+            var entity = await _context.CustomerTableAccess.SingleAsync(e => e.CustID == id);
+
+            _context.Remove(entity);
+
+            return await _context.SaveChangesAsync() == 1;
+        }
     }
 }

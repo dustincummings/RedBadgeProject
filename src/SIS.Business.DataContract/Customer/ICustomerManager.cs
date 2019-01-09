@@ -11,5 +11,6 @@ namespace RedStarter.Business.DataContract.Customer
         Task<IEnumerable<CustomerListDTO>> GetCustomerList();
         Task<CustomerListDTO> GetCustomerById(int id);
         Task<bool> EditCustomer(CustomerEditDTO dto);
+        Task<bool> DeleteCustomer(int id);
     }
 }

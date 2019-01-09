@@ -54,5 +54,13 @@ namespace RedStarter.Business.Managers.Customer
 
             throw new NotImplementedException();
         }
+
+        public async Task<bool> DeleteCustomer(int id)
+        {
+            if (await _repository.DeleteCustomer(id))
+                return true;
+
+            return false;
+        }
     }
 }
