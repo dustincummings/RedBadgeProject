@@ -44,5 +44,15 @@ namespace RedStarter.Database.Food
 
             return rao;
         }
+        public async Task<bool> EditFood(FoodUpdateRAO rao)
+        {
+            var entity = _mapper.Map<FoodEntity>(rao);
+           
+            _context.FoodTableAccess.Update(entity);
+
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+
     }
 }

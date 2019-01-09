@@ -68,6 +68,19 @@ namespace RedStarter.API.Controllers.Food
             var response = _mapper.Map<GetFoodListItemsResponse>(dto);
 
             return Ok(response);
+        }
+        [HttpPut]
+        public async Task<IActionResult> EditFood(PatchFoodListItemRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+            var dto = _mapper.Map<FoodUpdateDTO>(request);
+            if (await _manager.EditFood(dto))
+                return StatusCode(201);
+            throw new Exception();
+
 
         }
     }
