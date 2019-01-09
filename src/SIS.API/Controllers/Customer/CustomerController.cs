@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RedStarter.API.DataContract.Customer;
 using RedStarter.Business.DataContract.Customer;
+using RedStarter.Database.Contexts;
 
 namespace RedStarter.API.Controllers.Customer
 {
@@ -43,5 +44,23 @@ namespace RedStarter.API.Controllers.Customer
             throw new Exception();
             //return Ok();
         }
+
+        // GET /api/Customer
+       [HttpGet]
+       public async Task<IActionResult> GetCustomerList()
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var dto = await _manager.GetCustomerList();
+            var response = _mapper.Map<IEnumerable<CustomerListResponse>>(dto);
+
+            return Ok(response);
+        }
+
     }
 }
