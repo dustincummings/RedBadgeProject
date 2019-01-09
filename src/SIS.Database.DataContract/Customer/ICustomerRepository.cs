@@ -10,5 +10,6 @@ namespace RedStarter.Database.DataContract.Customer
         Task<bool> CreateCustomer(CustomerCreateRAO rao);
         Task<IEnumerable<CustomerListRAO>> GetCustomerList();
         Task<CustomerListRAO> GetCustomerById(int id);
+        Task<bool> EditCustomer(CustomerEditRAO rao);
     }
 }

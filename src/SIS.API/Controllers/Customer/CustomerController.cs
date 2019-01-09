@@ -55,7 +55,7 @@ namespace RedStarter.API.Controllers.Customer
                 return StatusCode(400);
             }
 
-            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            //var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             var dto = await _manager.GetCustomerList();
             var response = _mapper.Map<IEnumerable<CustomerListResponse>>(dto);
@@ -74,15 +74,33 @@ namespace RedStarter.API.Controllers.Customer
                 return StatusCode(400);
             }
 
-            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            //var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             var dto = await _manager.GetCustomerById(id);
             var response = _mapper.Map<CustomerListResponse>(dto);
 
             return Ok(response);
-
         }
 
+        // PUT /api/Customer/id
+        [HttpPut]
+
+        public async Task<IActionResult> EditCustomer(CustomerEditRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            //var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var dto = _mapper.Map<CustomerEditDTO>(request);
+
+            if (await _manager.EditCustomer(dto))
+                return StatusCode(201);
+
+            throw new Exception();
+        }
 
     }
 }

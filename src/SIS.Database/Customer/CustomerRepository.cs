@@ -47,5 +47,15 @@ namespace RedStarter.Database.Customer
 
             return rao;
         }
+
+        public async Task<bool> EditCustomer(CustomerEditRAO rao)
+        {
+            var entity = _mapper.Map<CustomerEntity>(rao);
+            _context.CustomerTableAccess.Update(entity);
+
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        
     }
 }
