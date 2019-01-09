@@ -8,5 +8,6 @@ namespace RedStarter.Database.DataContract.Customer
     public interface ICustomerRepository
     {
         Task<bool> CreateCustomer(CustomerCreateRAO rao);
+        Task<IEnumerable<CustomerListRAO>> GetCustomerList();
     }
 }

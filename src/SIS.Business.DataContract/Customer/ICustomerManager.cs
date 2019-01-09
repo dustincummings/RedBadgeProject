@@ -8,5 +8,6 @@ namespace RedStarter.Business.DataContract.Customer
     public interface ICustomerManager
     {
         Task<bool> CreateCustomer(CustomerCreateDTO dto);
+        Task<IEnumerable<CustomerListDTO>> GetCustomerList();
     }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RedStarter.Database.DataContract.Customer
+namespace RedStarter.API.DataContract.Customer
 {
-    public class CustomerCreateRAO
+    public class CustomerListResponse
     {
         public int CustID { get; set; }
         public string CustFirstName { get; set; }
@@ -13,6 +13,5 @@ namespace RedStarter.Database.DataContract.Customer
         public string CustPhone { get; set; }
         public string CustAddress { get; set; }
         public string CustCityStZip { get; set; }
-        public int OwnerID { get; set; }
     }
 }

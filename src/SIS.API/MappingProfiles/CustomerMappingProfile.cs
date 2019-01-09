@@ -14,9 +14,15 @@ namespace RedStarter.API.MappingProfiles
     {
         public CustomerMappingProfile()
         {
+            // Create Customer
             CreateMap<CustomerCreateRequest, CustomerCreateDTO>();
             CreateMap<CustomerCreateDTO, CustomerCreateRAO>();
             CreateMap<CustomerCreateRAO, CustomerEntity>();
+
+            // Customer Index List
+            CreateMap<CustomerEntity, CustomerListRAO>();
+            CreateMap<CustomerListRAO, CustomerListDTO>();
+            CreateMap<CustomerListDTO, CustomerListResponse>();
         }
     }
 }

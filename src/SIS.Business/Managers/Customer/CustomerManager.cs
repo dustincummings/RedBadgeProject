@@ -28,5 +28,13 @@ namespace RedStarter.Business.Managers.Customer
 
             throw new NotImplementedException();
         }
+
+        public async Task<IEnumerable<CustomerListDTO>> GetCustomerList()
+        {
+            var rao = await _repository.GetCustomerList();
+            var dto = _mapper.Map<IEnumerable<CustomerListDTO>>(rao);
+
+            return dto;
+        }
     }
 }
