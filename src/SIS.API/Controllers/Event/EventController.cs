@@ -48,6 +48,8 @@ namespace RedStarter.API.Controllers.Event
 
             throw new Exception();
         }
+        
+
 
     }
 }

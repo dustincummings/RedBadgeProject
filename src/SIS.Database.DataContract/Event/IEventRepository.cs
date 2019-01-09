@@ -8,5 +8,6 @@ namespace RedStarter.Database.DataContract.Event
     public interface IEventRepository
     {
         Task<bool> CreateEvent(EventCreateRAO rao);
+        Task<IEnumerable<EventGetListItemsRAO>> GetEvents();
     }
 }
