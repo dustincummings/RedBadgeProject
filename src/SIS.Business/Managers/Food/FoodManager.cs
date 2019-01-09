@@ -29,5 +29,21 @@ namespace RedStarter.Business.Managers.Food
 
             throw new NotImplementedException();
         }
+
+        public  async Task<IEnumerable<FoodGetListItemsDTO>> GetFoods()
+        {
+            var rao = await _repository.GetFoods();
+            var dto = _mapper.Map<IEnumerable<FoodGetListItemsDTO>>(rao);
+
+            return dto;
+        }
+
+        public async Task<FoodGetListItemsDTO> GetFoodById(int id)
+        {
+            var rao = await _repository.GetFoodById(id);
+            var dto = _mapper.Map<FoodGetListItemsDTO>(rao);
+
+            return dto;
+        }
     }
 }

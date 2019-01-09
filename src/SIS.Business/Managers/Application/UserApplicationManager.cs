@@ -38,9 +38,8 @@ namespace RedStarter.Business.Managers.Application
             Guid ApplicationGuid = Guid.NewGuid();
 
             if (await _applicationRepository.CreateApplication(rao, ApplicationGuid))
-            
-            if (await _roleRepository.AddUserToRole(user, "User"))
             {
+
                 await _roleRepository.AddUserToRole(user, "User");
                 return true;
             }
