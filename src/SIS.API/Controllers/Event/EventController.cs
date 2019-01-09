@@ -48,7 +48,24 @@ namespace RedStarter.API.Controllers.Event
 
             throw new Exception();
         }
-        
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> GetEvents()
+        {
+            if (!ModelState.IsValid) //want this to check 
+            {
+                return StatusCode(400);
+            }
+
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var dto = await _manager.GetEvents();
+            var response = _mapper.Map<IEnumerable<GetEventListItemsResponse>>(dto);
+
+            return Ok(response); //TODO : Handle exceptions
+
+        }
+
 
 
     }
