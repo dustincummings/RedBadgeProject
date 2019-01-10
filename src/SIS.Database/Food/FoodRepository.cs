@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RedStarter.Database.Contexts;
 using RedStarter.Database.DataContract.Food;
 using RedStarter.Database.Entities.Food;
@@ -26,10 +27,40 @@ namespace RedStarter.Database.Food
            await _context.FoodTableAccess.AddAsync(entity);
 
             return await _context.SaveChangesAsync() == 1;
-                
+        }
+
+        public async Task<FoodGetListItemsRAO> GetFoodById(int id)
+        {
+            var query = await _context.FoodTableAccess.SingleAsync(e => e.FoodID == id);
+            var rao = _mapper.Map<FoodGetListItemsRAO> (query);
+
+            return rao;
+        }
+
+        public async Task<IEnumerable<FoodGetListItemsRAO>> GetFoods()
+        {
+            var query = await _context.FoodTableAccess.ToArrayAsync();
+            var rao = _mapper.Map<IEnumerable<FoodGetListItemsRAO>>(query);
+
+            return rao;
+        }
+        public async Task<bool> EditFood(FoodUpdateRAO rao)
+        {
+            var entity = _mapper.Map<FoodEntity>(rao);
+           
+            _context.FoodTableAccess.Update(entity);
+
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        public async Task<bool> DeleteFood(int id)
+        {
+            var entity = await _context.FoodTableAccess.SingleAsync(e => e.FoodID == id);
+            _context.FoodTableAccess.Remove(entity);
+
+            return await _context.SaveChangesAsync() == 1;
 
 
-            
         }
     }
 }

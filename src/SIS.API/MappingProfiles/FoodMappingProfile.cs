@@ -18,6 +18,16 @@ namespace RedStarter.API.MappingProfiles
             CreateMap<FoodCreateDTO, FoodCreateRAO>();
             CreateMap<FoodCreateRAO, FoodEntity>();
 
+            CreateMap<FoodEntity, FoodGetListItemsRAO>();
+            CreateMap<FoodGetListItemsRAO, FoodGetListItemsDTO>();
+            CreateMap<FoodGetListItemsDTO, GetFoodListItemsResponse>();
+
+            CreateMap<PatchFoodListItemRequest, FoodUpdateDTO>();
+            CreateMap<FoodUpdateDTO, FoodUpdateRAO>();
+            CreateMap<FoodUpdateRAO, FoodEntity>();
+
+
+
         }
     }
 }
