@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedStarter.Database.Contexts;
 
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    partial class SISContextModelSnapshot : ModelSnapshot
+    [Migration("20190110171015_addedcustomerandfoodforeignkeystoevent")]
+    partial class addedcustomerandfoodforeignkeystoevent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,7 +220,7 @@ namespace RedStarter.Database.Migrations
 
                     b.Property<string>("AdditionalNotes");
 
-                    b.Property<int>("CustID");
+                    b.Property<int>("CustomerID");
 
                     b.Property<DateTime?>("DateOfEvent")
                         .IsRequired();
@@ -234,7 +236,7 @@ namespace RedStarter.Database.Migrations
 
                     b.HasKey("EventEntityId");
 
-                    b.HasIndex("CustID");
+                    b.HasIndex("CustomerID");
 
                     b.HasIndex("FoodID");
 
@@ -391,7 +393,7 @@ namespace RedStarter.Database.Migrations
                 {
                     b.HasOne("RedStarter.Database.Entities.Customer.CustomerEntity", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustID")
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RedStarter.Database.Entities.Food.FoodEntity", "Food")
