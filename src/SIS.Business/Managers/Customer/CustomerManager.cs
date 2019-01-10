@@ -36,5 +36,31 @@ namespace RedStarter.Business.Managers.Customer
 
             return dto;
         }
+
+        public async Task<CustomerListDTO> GetCustomerById(int id)
+        {
+                var rao = await _repository.GetCustomerById(id);
+                var dto = _mapper.Map<CustomerListDTO>(rao);
+
+                return dto;
+        }
+
+        public async Task<bool> EditCustomer(CustomerEditDTO dto)
+        {
+            var rao = _mapper.Map<CustomerEditRAO>(dto);
+
+            if (await _repository.EditCustomer(rao))
+                return true;
+
+            throw new NotImplementedException();
+        }
+
+        public async Task<bool> DeleteCustomer(int id)
+        {
+            if (await _repository.DeleteCustomer(id))
+                return true;
+
+            return false;
+        }
     }
 }
