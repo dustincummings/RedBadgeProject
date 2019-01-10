@@ -21,7 +21,12 @@ namespace RedStarter.API.MappingProfiles
             CreateMap<EventEntity, EventGetListItemsRAO>();
             CreateMap<EventGetListItemsRAO, EventGetListItemsDTO>();
             CreateMap<EventGetListItemsDTO, GetEventListItemsResponse>();
-            
+
+            CreateMap<PatchEventListItemRequest, EventUpdateDTO>();
+            CreateMap<EventUpdateDTO, EventUpdateRAO>();
+            CreateMap<EventUpdateRAO, EventEntity>();
+
+
         }
     }
 }

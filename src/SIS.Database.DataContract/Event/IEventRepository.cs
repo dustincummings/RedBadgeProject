@@ -10,5 +10,7 @@ namespace RedStarter.Database.DataContract.Event
         Task<bool> CreateEvent(EventCreateRAO rao);
         Task<IEnumerable<EventGetListItemsRAO>> GetEvents();
         Task<EventGetListItemsRAO> GetEventById(int id);
+        Task<bool> EditEvent(EventUpdateRAO rao);
+        Task<bool> DeleteEvent(int id);
     }
 }
