@@ -10,6 +10,9 @@ namespace RedStarter.Database.DataContract.Food
         Task<bool> CreateFood(FoodCreateRAO rao);
         Task<IEnumerable<FoodGetListItemsRAO>> GetFoods();
         Task<FoodGetListItemsRAO> GetFoodById(int id);
+        Task<bool> EditFood(FoodUpdateRAO rao);
+        Task<bool> DeleteFood(int id);
+
 
     }
 }
