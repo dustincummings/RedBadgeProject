@@ -6,6 +6,7 @@ namespace RedStarter.Database.DataContract.Event
 {
     public class EventUpdateRAO
     {
+        public int EventEntityID { get; set; }
         public string Location { get; set; }
         public int NumberOfPeople { get; set; }
         public string AdditionalNotes { get; set; }

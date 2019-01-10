@@ -26,7 +26,7 @@ namespace RedStarter.API.Controllers.Event
         }
 
       [HttpPost]
-      [Authorize(Roles ="Admin, User")]
+      //[Authorize(Roles ="Admin, User")]
       public async Task<IActionResult> PostEvent(EventCreateRequest request)
         {
 
@@ -49,7 +49,7 @@ namespace RedStarter.API.Controllers.Event
             throw new Exception();
         }
         [HttpGet]
-        [Authorize(Roles = "User")]
+        //[Authorize(Roles = "User")/*]*/
         public async Task<IActionResult> GetEvents()
         {
             if (!ModelState.IsValid) //want this to check 
