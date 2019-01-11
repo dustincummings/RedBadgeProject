@@ -10,7 +10,7 @@ namespace RedStarter.API.DataContract.Food
         public string Name { get; set; }
         public string Description { get; set; }
         public string Ingredient { get; set; }
-        public AllergenType Allergen { get; set; }
+        public string Allergen { get; set; }
 
     }
 }
