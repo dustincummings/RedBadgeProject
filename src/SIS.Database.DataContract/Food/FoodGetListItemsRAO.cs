@@ -6,6 +6,7 @@ namespace RedStarter.Database.DataContract.Food
 {
     public class FoodGetListItemsRAO
     {
+        public int FoodID { get; set; } 
         public string Name { get; set; }
         public string Description { get; set; }
         public string Ingredient { get; set; }
