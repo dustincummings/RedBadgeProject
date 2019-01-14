@@ -7,7 +7,7 @@ namespace RedStarter.Business.DataContract.Event
 {
     public class EventGetListItemsDTO
     {
-        
+        public int EventEntityID { get; set; }
         public string Location { get; set; }
         public int NumberOfPeople { get; set; }
         public string AdditionalNotes { get; set; }
