@@ -11,12 +11,12 @@ namespace RedStarter.Database.DataContract.Event
         public string Location { get; set; }
         public int NumberOfPeople { get; set; }
         public string AdditionalNotes { get; set; }
-        public int FoodId { get; set; }
+        public int FoodID { get; set; }
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date of Event")]
         public DateTime? DateOfEvent { get; set; }
-        public int OwnerId { get; set; }
+        public int OwnerID { get; set; }
         public int CustID { get; set; }
 
         

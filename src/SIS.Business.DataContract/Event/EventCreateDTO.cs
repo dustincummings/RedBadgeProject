@@ -13,7 +13,6 @@ namespace RedStarter.Business.DataContract.Event
         public int FoodID { get; set; }
         public DateTime? DateOfEvent { get; set; }
         public int CustID { get; set; }
-        public DateTimeOffset DateCreated { get; set; }
         public int OwnerID { get; set; }
     }
 }
