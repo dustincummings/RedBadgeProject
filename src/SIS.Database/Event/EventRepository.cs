@@ -38,7 +38,7 @@ namespace RedStarter.Database.Event
 
         public async Task<EventGetListItemsRAO> GetEventById(int id)
         {
-            var query = await _context.EventTableAccess.SingleAsync(e=> e.EventEntityId ==id);
+            var query = await _context.EventTableAccess.SingleAsync(e=> e.EventEntityID ==id);
             var rao = _mapper.Map<EventGetListItemsRAO>(query);
 
             return rao;
@@ -63,7 +63,7 @@ namespace RedStarter.Database.Event
 
         public async Task<bool> DeleteEvent(int id)
         {
-            var entity = await _context.EventTableAccess.SingleAsync(e => e.EventEntityId == id);
+            var entity = await _context.EventTableAccess.SingleAsync(e => e.EventEntityID == id);
             _context.EventTableAccess.Remove(entity);
 
             return await _context.SaveChangesAsync() == 1;

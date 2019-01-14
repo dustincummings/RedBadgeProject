@@ -41,7 +41,7 @@ namespace RedStarter.API.Controllers.Event
 
             var dto = _mapper.Map<EventCreateDTO>(request);
             dto.DateCreated = DateTime.Now;
-            dto.OwnerId = identityClaimNum;
+            dto.OwnerID = identityClaimNum;
 
             if(await _manager.CreateEvent(dto))
                 return StatusCode(201);

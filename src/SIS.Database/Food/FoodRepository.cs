@@ -21,7 +21,7 @@ namespace RedStarter.Database.Food
             _mapper = mapper;
         }
         public async Task<bool> CreateFood(FoodCreateRAO rao)
-        {
+            {
             var entity = _mapper.Map<FoodEntity>(rao);
 
            await _context.FoodTableAccess.AddAsync(entity);

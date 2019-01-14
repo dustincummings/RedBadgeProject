@@ -78,7 +78,6 @@ namespace RedStarter.API.Controllers.Customer
 
             var dto = await _manager.GetCustomerById(id);
             var response = _mapper.Map<CustomerListResponse>(dto);
-
             return Ok(response);
         }
 

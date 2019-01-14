@@ -10,9 +10,9 @@ namespace RedStarter.Database.Entities.Event
    public class EventEntity
     {
         [Key]
-        public int EventEntityId { get; set; }
+        public int EventEntityID { get; set; }
         [Required]
-        public int OwnerId { get; set; }
+        public int OwnerID { get; set; }
         [Required]
         public string Location { get; set; }
         public int NumberOfPeople { get; set; }
