@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -15,15 +16,13 @@ namespace RedStarter.Database.Event
         private readonly SISContext _context;
         private readonly IMapper _mapper;
 
+
         public EventRepository(SISContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
 
         }
-
-
-
 
         public async Task<bool> CreateEvent(EventCreateRAO rao)
         {
@@ -32,8 +31,6 @@ namespace RedStarter.Database.Event
             await _context.EventTableAccess.AddAsync(entity);
 
             return await _context.SaveChangesAsync() == 1;
-
-          
         }
 
         public async Task<EventGetListItemsRAO> GetEventById(int id)
@@ -45,9 +42,9 @@ namespace RedStarter.Database.Event
         }
         
 
-        public async Task<IEnumerable<EventGetListItemsRAO>> GetEvents()
+        public async Task<IEnumerable<EventGetListItemsRAO>> GetEvents(int id)
         {
-            var query = await _context.EventTableAccess.ToArrayAsync();
+            var query = await _context.EventTableAccess.Where(e => e.OwnerID == id).ToArrayAsync();
             var rao = _mapper.Map<IEnumerable<EventGetListItemsRAO>>(query);
 
             return rao;
@@ -67,8 +64,6 @@ namespace RedStarter.Database.Event
             _context.EventTableAccess.Remove(entity);
 
             return await _context.SaveChangesAsync() == 1;
-
-
         }
     }
 }

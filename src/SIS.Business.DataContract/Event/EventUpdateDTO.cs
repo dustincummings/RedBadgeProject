@@ -16,7 +16,7 @@ namespace RedStarter.Business.DataContract.Event
         public int CustID { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Date of Event")]
         public DateTime? DateOfEvent { get; set; }
     }

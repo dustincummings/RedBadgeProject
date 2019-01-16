@@ -39,9 +39,9 @@ namespace RedStarter.Business.Managers.Event
             return dto;
         }
 
-        public async Task<IEnumerable<EventGetListItemsDTO>> GetEvents()
+        public async Task<IEnumerable<EventGetListItemsDTO>> GetEvents(int id)
         {
-            var rao = await _repository.GetEvents();
+            var rao = await _repository.GetEvents(id);
             var dto = _mapper.Map<IEnumerable<EventGetListItemsDTO>>(rao);
 
             return dto;
