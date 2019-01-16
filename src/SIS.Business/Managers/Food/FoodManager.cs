@@ -60,7 +60,6 @@ namespace RedStarter.Business.Managers.Food
             await _repository.DeleteFood(id);
 
             return true;
-
         }
     }
 }

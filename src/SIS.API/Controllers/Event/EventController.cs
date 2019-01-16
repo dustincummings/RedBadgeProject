@@ -40,8 +40,7 @@ namespace RedStarter.API.Controllers.Event
 
 
             var dto = _mapper.Map<EventCreateDTO>(request);
-            dto.DateCreated = DateTime.Now;
-            dto.OwnerId = identityClaimNum;
+            dto.OwnerID = identityClaimNum;
 
             if(await _manager.CreateEvent(dto))
                 return StatusCode(201);
@@ -59,7 +58,7 @@ namespace RedStarter.API.Controllers.Event
 
             var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var dto = await _manager.GetEvents();
+            var dto = await _manager.GetEvents(identityClaimNum);
             var response = _mapper.Map<IEnumerable<GetEventListItemsResponse>>(dto);
 
             return Ok(response); //TODO : Handle exceptions

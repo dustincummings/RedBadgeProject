@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedStarter.Database.Contexts;
 
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    partial class SISContextModelSnapshot : ModelSnapshot
+    [Migration("20190111191330_changedAllergenFromBoolToString")]
+    partial class changedAllergenFromBoolToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,7 +214,7 @@ namespace RedStarter.Database.Migrations
 
             modelBuilder.Entity("RedStarter.Database.Entities.Event.EventEntity", b =>
                 {
-                    b.Property<int>("EventEntityID")
+                    b.Property<int>("EventEntityId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -220,7 +222,8 @@ namespace RedStarter.Database.Migrations
 
                     b.Property<int>("CustID");
 
-                    b.Property<DateTime>("DateOfEvent");
+                    b.Property<DateTime?>("DateOfEvent")
+                        .IsRequired();
 
                     b.Property<int>("FoodID");
 
@@ -229,9 +232,9 @@ namespace RedStarter.Database.Migrations
 
                     b.Property<int>("NumberOfPeople");
 
-                    b.Property<int>("OwnerID");
+                    b.Property<int>("OwnerId");
 
-                    b.HasKey("EventEntityID");
+                    b.HasKey("EventEntityId");
 
                     b.HasIndex("CustID");
 

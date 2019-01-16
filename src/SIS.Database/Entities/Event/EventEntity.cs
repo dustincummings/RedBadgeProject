@@ -10,9 +10,9 @@ namespace RedStarter.Database.Entities.Event
    public class EventEntity
     {
         [Key]
-        public int EventEntityId { get; set; }
+        public int EventEntityID { get; set; }
         [Required]
-        public int OwnerId { get; set; }
+        public int OwnerID { get; set; }
         [Required]
         public string Location { get; set; }
         public int NumberOfPeople { get; set; }
@@ -21,10 +21,10 @@ namespace RedStarter.Database.Entities.Event
         public int FoodID { get; set; }
         public int CustID { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Date of Event")]
-        public DateTime? DateOfEvent { get; set; }
+        public DateTime DateOfEvent { get; set; }
 
         public virtual FoodEntity Food { get; set; }
         public virtual CustomerEntity Customer { get; set; }

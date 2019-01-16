@@ -5,7 +5,6 @@ using System.Text;
 
 namespace RedStarter.Database.Entities.Food
 {
-    public enum AllergenType { Egg = 1, Fish, Shellfish, CowMilk, TreeNuts, Peanuts, Wheat, Soy }
 
     public class FoodEntity
     {
@@ -20,7 +19,7 @@ namespace RedStarter.Database.Entities.Food
         [Required]
         public string Ingredient { get; set; }
         [Required]
-        public AllergenType Allergen { get; set; }
+        public string Allergen { get; set; }
 
     }
 }
