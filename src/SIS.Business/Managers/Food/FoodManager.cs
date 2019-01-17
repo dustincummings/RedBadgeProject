@@ -30,9 +30,9 @@ namespace RedStarter.Business.Managers.Food
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<FoodGetListItemsDTO>> GetFoods()
+        public async Task<IEnumerable<FoodGetListItemsDTO>> GetFoods(int id)
         {
-            var rao = await _repository.GetFoods();
+            var rao = await _repository.GetFoods(id);
             var dto = _mapper.Map<IEnumerable<FoodGetListItemsDTO>>(rao);
 
             return dto;

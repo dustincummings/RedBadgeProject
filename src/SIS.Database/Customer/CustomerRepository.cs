@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -32,9 +33,9 @@ namespace RedStarter.Database.Customer
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<CustomerListRAO>> GetCustomerList()
+        public async Task<IEnumerable<CustomerListRAO>> GetCustomerList(int id)
         {
-            var query = await _context.CustomerTableAccess.ToArrayAsync();
+            var query = await _context.CustomerTableAccess.Where(e => e.OwnerID == id).ToArrayAsync();
             var rao = _mapper.Map<IEnumerable<CustomerListRAO>>(query);
 
             return rao;
