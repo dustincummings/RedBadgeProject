@@ -5,6 +5,7 @@ using RedStarter.Database.DataContract.Food;
 using RedStarter.Database.Entities.Food;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,9 +38,9 @@ namespace RedStarter.Database.Food
             return rao;
         }
 
-        public async Task<IEnumerable<FoodGetListItemsRAO>> GetFoods()
+        public async Task<IEnumerable<FoodGetListItemsRAO>> GetFoods(int id)
         {
-            var query = await _context.FoodTableAccess.ToArrayAsync();
+            var query = await _context.FoodTableAccess.Where(e => e.OwnerID == id).ToArrayAsync();
             var rao = _mapper.Map<IEnumerable<FoodGetListItemsRAO>>(query);
 
             return rao;

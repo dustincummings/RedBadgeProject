@@ -6,6 +6,7 @@ namespace RedStarter.API.DataContract.Food
 {
     public class GetFoodListItemsResponse
     {
+        public int OwnerID { get; set; }
         public int FoodID  { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
