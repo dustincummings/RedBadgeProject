@@ -55,9 +55,9 @@ namespace RedStarter.API.Controllers.Customer
                 return StatusCode(400);
             }
 
-            //var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var dto = await _manager.GetCustomerList();
+            var dto = await _manager.GetCustomerList(identityClaimNum);
             var response = _mapper.Map<IEnumerable<CustomerListResponse>>(dto);
 
             return Ok(response);

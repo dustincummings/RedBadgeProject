@@ -50,8 +50,9 @@ namespace RedStarter.API.Controllers.Food
             {
                 return StatusCode(400);
             }
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var dto = await _manager.GetFoods();
+            var dto = await _manager.GetFoods(identityClaimNum);
             var response = _mapper.Map<IEnumerable<GetFoodListItemsResponse>>(dto);
 
             return Ok(response);
