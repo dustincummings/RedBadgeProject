@@ -11,6 +11,7 @@ namespace RedStarter.Database.DataContract.Food
         public string Description { get; set; }
         public string Ingredient { get; set; }
         public string Allergen { get; set; }
+        public int OwnerID { get; set; }
 
     }
 }

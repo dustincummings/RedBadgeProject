@@ -19,7 +19,7 @@ namespace RedStarter.Database.DataContract.Event
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Date of Event")]
         public DateTime? DateOfEvent { get; set; }
+        public int OwnerID { get; set; }
 
-      
     }
 }

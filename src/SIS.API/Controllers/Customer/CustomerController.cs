@@ -26,6 +26,7 @@ namespace RedStarter.API.Controllers.Customer
         }
 
         [HttpPost]
+        //[Authorize(Roles = "User")]
         public async Task<IActionResult> PostCustomer(CustomerCreateRequest request)
         {
             if (!ModelState.IsValid)

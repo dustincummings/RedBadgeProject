@@ -19,5 +19,6 @@ namespace RedStarter.API.DataContract.Event
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date of Event")]
         public DateTime? DateOfEvent { get; set; }
+        public int OwnerID { get; set; }
     }
 }
